@@ -83,6 +83,7 @@ class Faculty{
         }
         return $data;
     }
+    //notsure for delete function here
 
 
 }
