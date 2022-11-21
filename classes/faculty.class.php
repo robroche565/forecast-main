@@ -84,6 +84,17 @@ class Faculty{
         return $data;
     }
     //notsure for delete function here
+    function delete($record_id){
+        $sql = "DELETE FROM faculty WHERE id = :id;";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $record_id);
+        if($query->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 
 }

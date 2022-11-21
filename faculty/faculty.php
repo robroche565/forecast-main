@@ -12,6 +12,7 @@
     }
     //if the above code is false then html below will be displayed
 
+
     require_once '../tools/variables.php';
     $page_title = 'Forecast | Show Faculty';
     $faculty = 'active';
@@ -77,7 +78,7 @@
                                 <td>
                                     <div class="action">
                                         <a class="action-edit" href="editfaculty.php?id=<?php echo $value['id'] ?>">Edit</a>
-                                        <a class="action-delete" href="#">Delete</a>
+                                        <a href="deletefaculty.php?id=<?php echo $value['id'] ?>" class="action-delete">Delete</a>
                                     </div>
                                 </td>
                             <?php
