@@ -18,19 +18,20 @@
     //if add faculty is submitted
     if(isset($_POST['save'])){
         //sanitize user inputs
+        $facultyobj->id = $_POST['faculty-id'];
         $facultyobj->firstname = htmlentities($_POST['fn']);
         $facultyobj->lastname = htmlentities($_POST['ln']);
         $facultyobj->email = htmlentities($_POST['email']);
         $facultyobj->academic_rank = $_POST['rank'];
         $facultyobj->department = $_POST['department'];
         if(isset($_POST['role'])){
-            $faculty->admission_role = $_POST['role'];
+            $facultyobj->admission_role = $_POST['role'];
         }
         if(isset($_POST['status'])){
-            $faculty->status = $_POST['status'];
+            $facultyobj->status = $_POST['status'];
         }
         if(validate_add_faculty($_POST)){
-            if($faculty->edit()){
+            if($facultyobj->edit()){
                 //redirect user to program page after saving
                 header('location: faculty.php');
             }
@@ -46,10 +47,9 @@
             $facultyobj->department = $data['department'];
             $facultyobj->admission_role = $data['admission_role'];
             $facultyobj->status = $data['status'];
-            
+
         }
     }
-    
 
     require_once '../tools/variables.php';
     $page_title = 'Forecast | Update Faculty';
@@ -67,9 +67,9 @@
                 <a class="back" href="faculty.php"><i class='bx bx-caret-left'></i>Back</a>
             </div>
             <div class="add-form-container">
-                <form class="add-form" action="addfaculty.php" method="post">
+                <form class="add-form" action="editfaculty.php" method="post">
                 <input type="text" hidden name="faculty-id" value="<?php echo $facultyobj->id ; ?>">
-                
+
                     <label for="fn">First Name</label>
                     <input type="text" id="fn" name="fn" required placeholder="Enter first name" value="<?php if(isset($_POST['fn'])) { echo $_POST['fn'];} else { echo $facultyobj->firstname; } ?>">
                     <?php

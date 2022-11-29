@@ -23,7 +23,7 @@ class Faculty{
 
     //Methods
     function add(){
-        $sql = "INSERT INTO faculty (firstname, lastname, email, academic_rank, department, admission_role, status) VALUES 
+        $sql = "INSERT INTO faculty (firstname, lastname, email, academic_rank, department, admission_role, status) VALUES
         (:firstname, :lastname, :email, :academic_rank, :department, :admission_role, :status);";
 
         $query=$this->db->connect()->prepare($sql);
@@ -34,16 +34,16 @@ class Faculty{
         $query->bindParam(':department', $this->department);
         $query->bindParam(':admission_role', $this->admission_role);
         $query->bindParam(':status', $this->status);
-        
+
         if($query->execute()){
             return true;
         }
         else{
             return false;
-        }	
+        }
     }
 
-    
+
     function edit(){
         $sql = "UPDATE faculty SET firstname=:firstname, lastname=:lastname, email=:email, academic_rank=:academic_rank, department=:department, admission_role=:admission_role, status=:status WHERE id = :id;";
 
@@ -56,13 +56,13 @@ class Faculty{
         $query->bindParam(':admission_role', $this->admission_role);
         $query->bindParam(':status', $this->status);
         $query->bindParam(':id', $this->id);
-        
+
         if($query->execute()){
             return true;
         }
         else{
             return false;
-        }	
+        }
     }
 
     function fetch($record_id){
@@ -74,16 +74,7 @@ class Faculty{
         }
         return $data;
     }
-    
-    function show(){
-        $sql = "SELECT * FROM faculty ORDER BY CONCAT('lastname',', ','firstname') ASC;";
-        $query=$this->db->connect()->prepare($sql);
-        if($query->execute()){
-            $data = $query->fetchAll();
-        }
-        return $data;
-    }
-    //notsure for delete function here
+
     function delete($record_id){
         $sql = "DELETE FROM faculty WHERE id = :id;";
         $query=$this->db->connect()->prepare($sql);
@@ -94,6 +85,15 @@ class Faculty{
         else{
             return false;
         }
+    }
+
+    function show(){
+        $sql = "SELECT * FROM faculty ORDER BY CONCAT('lastname',', ','firstname') ASC";
+        $query=$this->db->connect()->prepare($sql);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
     }
 
 

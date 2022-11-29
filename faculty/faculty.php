@@ -12,7 +12,6 @@
     }
     //if the above code is false then html below will be displayed
 
-
     require_once '../tools/variables.php';
     $page_title = 'Forecast | Show Faculty';
     $faculty = 'active';
@@ -26,7 +25,7 @@
             <div class="table-heading">
                 <h3 class="table-title">Faculty Profile</h3>
                 <?php
-                    if($_SESSION['user_type'] == 'admin'){ 
+                    if($_SESSION['user_type'] == 'admin'){
                 ?>
                     <a href="addfaculty.php" class="button">Add New Faculty</a>
                 <?php
@@ -44,7 +43,7 @@
                         <th>Admission Role</th>
                         <th>Status</th>
                         <?php
-                            if($_SESSION['user_type'] == 'admin'){ 
+                            if($_SESSION['user_type'] == 'admin'){
                         ?>
                             <th class="action">Action</th>
                         <?php
@@ -73,12 +72,12 @@
                             <td><?php echo $value['admission_role'] ?></td>
                             <td><?php echo $value['status'] ?></td>
                             <?php
-                                if($_SESSION['user_type'] == 'admin'){ 
+                                if($_SESSION['user_type'] == 'admin'){
                             ?>
                                 <td>
                                     <div class="action">
                                         <a class="action-edit" href="editfaculty.php?id=<?php echo $value['id'] ?>">Edit</a>
-                                        <a href="deletefaculty.php?id=<?php echo $value['id'] ?>" class="action-delete">Delete</a>
+                                        <a class="action-delete" href="deletefaculty.php?id=<?php echo $value['id'] ?>">Delete</a>
                                     </div>
                                 </td>
                             <?php
@@ -99,3 +98,35 @@
     require_once '../includes/bottomnav.php';
     require_once '../includes/footer.php';
 ?>
+
+<div id="delete-dialog" class="dialog" title="Delete Faculty">
+    <p><span>Are you sure you want to delete the selected record?</span></p>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#delete-dialog").dialog({
+            resizable: false,
+            draggable: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            autoOpen: false
+        });
+        $(".action-delete").on('click', function(e) {
+            e.preventDefault();
+            var theHREF = $(this).attr("href");
+
+            $("#delete-dialog").dialog('option', 'buttons', {
+                "Yes" : function() {
+                    window.location.href = theHREF;
+                },
+                "Cancel" : function() {
+                    $(this).dialog("close");
+                }
+            });
+
+            $("#delete-dialog").dialog("open");
+        });
+    });
+</script>

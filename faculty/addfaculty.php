@@ -18,21 +18,21 @@
     //if add faculty is submitted
     if(isset($_POST['save'])){
 
-        $faculty = new Faculty();
+        $facultyobj = new Faculty();
         //sanitize user inputs
-        $faculty->firstname = htmlentities($_POST['fn']);
-        $faculty->lastname = htmlentities($_POST['ln']);
-        $faculty->email = htmlentities($_POST['email']);
-        $faculty->academic_rank = $_POST['rank'];
-        $faculty->department = $_POST['department'];
+        $facultyobj->firstname = htmlentities($_POST['fn']);
+        $facultyobj->lastname = htmlentities($_POST['ln']);
+        $facultyobj->email = htmlentities($_POST['email']);
+        $facultyobj->academic_rank = $_POST['rank'];
+        $facultyobj->department = $_POST['department'];
         if(isset($_POST['role'])){
-            $faculty->admission_role = $_POST['role'];
+            $facultyobj->admission_role = $_POST['role'];
         }
         if(isset($_POST['status'])){
-            $faculty->status = $_POST['status'];
+            $facultyobj->status = $_POST['status'];
         }
         if(validate_add_faculty($_POST)){
-            if($faculty->add()){  
+            if($facultyobj->add()){  
                 //redirect user to faculty page after saving
                 header('location: faculty.php');
             }

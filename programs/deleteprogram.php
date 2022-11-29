@@ -1,6 +1,6 @@
 <?php
 
-    require_once '../classes/faculty.class.php';
+    require_once '../classes/program.class.php';
 
     //resume session here to fetch session values
     session_start();
@@ -13,11 +13,11 @@
         header('location: ../login/login.php');
     }
     //if the above code is false then code and html below will be executed
-    $facultyobj = new Faculty;
+    $program = new Program;
     if(isset($_GET['id'])){
-        if($facultyobj->delete($_GET['id'])){
-
-            header('location: faculty.php');
+        if($program->delete($_GET['id'])){
+            //redirect user to program page after saving
+            header('location: programs.php');
         }
     }
 ?>

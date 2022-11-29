@@ -64,6 +64,7 @@ body{
 .login-form .button{
     margin-top: 10px;
     line-height: 27px;
+    cursor: pointer;
 }
 
 .login-form{
@@ -550,19 +551,19 @@ a.button{
   .container input:checked ~ .checkbox {
     background-color: #2196F3;
   }
-  
+
   /* Create the checkbox/indicator (hidden when not checked) */
   .checkbox:after {
     content: "";
     position: absolute;
     display: none;
   }
-  
+
   /* Show the checkbox when checked */
   .container input:checked ~ .checkbox:after {
     display: block;
   }
-  
+
   /* Style the checkbox/indicator */
   .container .checkbox:after {
     left: 9px;
@@ -600,3 +601,82 @@ a.button{
     font-size: 24px;
     color: #107869;
   }
+
+  div.dialog p{
+    text-align: center;
+  }
+
+  .bx-menu.large{
+    display: none;
+  }
+  .signup-login-box{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .signup-login-box a{
+    text-decoration: none;
+    display: flex;
+    padding-left: 5px;
+    color: #2196F3;
+  }
+  #signup-modal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, .6);
+}
+
+.signup-form .logo-details .logo-name{
+    color: #107869;
+    font-size: 36px;
+    font-weight: bold;
+}
+.signup-form .divider {
+    margin-top: 30px;
+}
+.signup-form form input{
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+.signup-form button{
+    padding: 12px 0px;
+    width: 100%;
+    background: #107869;
+    border-radius: 4px;
+    border: 0;
+    color: white;
+    margin: 10px auto;
+    cursor: pointer;
+}
+.modal{
+    padding: 20px 0px 20px 0px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    padding: 40px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 4%;
+}
+.top-form{
+    display: flex;
+    justify-content: flex-end;
+}
+.top-form .close-modal{
+    cursor: pointer;
+    font-size: 20px;
+    color: #107869;
+    justify-content: flex-end;
+}
